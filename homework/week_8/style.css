@@ -1,0 +1,9 @@
+body {
+    background: Yellow;
+}
+
+a:link, a:visited, a:hover {
+    text-decoration: none;
+    color: Green;
+}
+
