@@ -1,4 +1,3 @@
-
 def get_runs(player)
 puts "How many runs did #{player} score over the 5 year period from 1998-2002. List his runs scored by year and type an empty line when done."  
     total_runs = 0
