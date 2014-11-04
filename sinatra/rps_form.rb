@@ -1,11 +1,13 @@
 require 'sinatra'
+require 'sinatra/reloader' if development?
 
 get '/' do
     erb :home
 end
 
 #get '/throw/:choice' do 
-get '/throw' do
+post '/throw' do
+    @title = "Rock, Paper, Scissors: Your Results"
     #hash of what beats what
     beats = {
         "Rock" => "Scissors",
@@ -37,28 +39,24 @@ end
 
 __END__
 
-@@home
-
+@@layout
 <!DOCTYPE html>
 <html>
     <head><title>Rock, Paper, Scissors (FORM)</title></head>
     <body>
-        <h1>Rock, Paper, Scissors (FORM)</h1>
+        <!-- put logo here -->
+        <h1>Rock, Paper, Scissors (FORM)</h1>        
+        <%= yield %>
+    </body>
+</html>
+
+@@home
         <p>Enter Rock, Paper, or Scissors</p>
-        <form action="/throw" method="get">
+        <form action="/throw" method="post">
             <input type="text" name="choice"/ >
         </form>
-    </body>
-</html>
 
 @@throw 
-
-<!DOCTYPE html>
-<html>
-    <head><title>Rock, Paper, Scissors(FORM)</title></head>
-    <body>
-        <h1>Rock, Paper, Scissors (FORM)</h1>
         <h2>Your results:</h2>
         <%= @results %>
-    </body>
-</html>
+  
